@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/Fontawesome")
+    <style>
+
+        body {
+            font-family: "Lato", sans-serif;
+            padding-top: 0;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+            .sidenav a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 16px;
+                color: #FFFF;
+                display: block;
+                transition: 0.3s;
+            }
+
+                .sidenav a:hover {
+                    color: dodgerblue;
+                }
+
+            .sidenav .closebtn {
+                position: absolute;
+                top: 0;
+                right: 25px;
+                font-size: 36px;
+                margin-left: 50px;
+            }
+
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        media screen and (max-height: 450px) {
+            .sidenav
+        }
+
+        {
+        }
+
+        .sidenav a {
+            font-size:15px;
+        }
+
+
+        .navbar-brand {
+            color: cornflowerblue
+        }
+
+            .navbar-brand:visited {
+                color: cornflowerblue !important
+            }
+
+        .navbar-default-color {
+            color: cornflowerblue !important
+        }
+
+        .navbar-inverse {
+            color: #FFFFFF !important
+        }
+
+        .a:link, a:visited {
+            color: #FFFFFF !important;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> ☰</a>
+
+
+
+        <h2 style="padding-left:10px">Task</h2>
+        <a href="../AssignTasks/Create">Create Task</a>
+        
+
+
+
+    </div>
+    <!-- Use any element to open the sidenav -->
+
+
+    <div id="main">
+        <div class="row">
+            <div class="col-sm">
+                <div class="navbar navbar-light bg-light">
+                    <div class="container">
+                        <div class="row">
+
+
+                            <div class="col-lg-1">
+                                <Button id="menuBtn" style="margin-top:8px;background-color:dodgerblue;color:white" class="btn btn-light" onclick="openNav()">
+                                    ☰
+                                </Button>
+                            </div>
+                            <div class="col-lg-11">
+
+
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    @Html.ActionLink("Task Recorder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", Styles = "color:black" })
+                                </div>
+                                <div class="navbar-collapse collapse">
+
+                                    @Html.Partial("_LoginPartial")
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="container body-content">
+                    @RenderBody()
+                    <hr />
+
+                </div>
+            </div>
+            <script>
+                function openNav() {
+                    document.getElementById("menuBtn").style.display = "none"
+
+                    document.getElementById("mySidenav").style.width = "280px";
+                    document.getElementById("main").style.marginLeft = "280px";
+                }
+
+                function closeNav() {
+                    document.getElementById("menuBtn").style.display = "block"
+                    document.getElementById("mySidenav").style.width = "0";
+                    document.getElementById("main").style.marginLeft = "0";
+                }
+            </script>
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+
+
+
+
+            <script>
+                /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                var dropdown = document.getElementsByClassName("dropdown-btn");
+                var i;
+
+                for (i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                            dropdownContent.style.display = "none";
+                        } else {
+                            dropdownContent.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+           </div>
+        </div>
+
+</body>
+
+
+
+
+</html>

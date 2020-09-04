@@ -1,0 +1,41 @@
+﻿@model IEnumerable<JobWork.Models.AssignTask>
+
+@{
+    ViewBag.Title = "assignTask";
+}
+
+<h2>assignTask</h2>
+
+<form action="/ListTask/assignTask" method="get">
+    @Html.DropDownList("TaskName", new SelectList(ViewBag.TaskName, "TaskName", "TaskName"), null, null)
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+@if(Model != null)
+{
+    <table class="table">
+        <tr>
+            <th>
+                UserEmail
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskName)
+            </th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaskName)
+                </td>
+                <td>
+                 @User.Identity.Name
+                </td>
+               
+            </tr>
+        }
+
+    </table>
+}

@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+
+    .zoom {
+        color: white;
+        background-color: dodgerblue;
+        transition: transform .2s; /* Animation */
+    }
+
+        .zoom:hover {
+            background-color: #1eb0ff;
+            transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+
+    a:link {
+        text-decoration: none;
+    }
+
+    a:visited {
+        text-decoration: none;
+    }
+</style>
+
+<div class="container">
+
+    @if (@Request.IsAuthenticated.ToString() == "True")
+    {
+        <div class="row">
+            <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1" style="text-decoration:none">
+
+                <a href="../ListTask/assignTask">
+
+                    <h3 style="color:white">Assign Task</h3>
+
+                </a>
+            </div>
+
+
+        </div>
+
+    }
+
+
+</div>
